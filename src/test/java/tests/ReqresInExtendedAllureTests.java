@@ -12,6 +12,8 @@ import static io.restassured.RestAssured.given;
 import static io.restassured.http.ContentType.JSON;
 import static models.helpers.CustomAllureListener.withCustomTemplates;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static specs.LoginSpecs.loginRequestSpec;
+import static specs.LoginSpecs.loginResponseSpec;
 
 public class ReqresInExtendedAllureTests {
 
@@ -113,5 +115,25 @@ public class ReqresInExtendedAllureTests {
 
         step("Check response", () ->
         assertEquals("QpwL5tke4Pnpja7X4", loginResponseModel.getToken()));
+    }
+    @Test
+    void successfulLoginWithSpecsTest() {
+
+        LoginBodyLombokModel requestBody = new LoginBodyLombokModel();
+        requestBody.setEmail("eve.holt@reqres.in");
+        requestBody.setPassword("cityslicka");
+
+        LoginResponseLombokModel loginResponseModel = step("Make request", () ->
+                given(loginRequestSpec)
+//                        .spec(loginRequestSpec)
+                        .body(requestBody)
+                        .when()
+                        .post("/login")
+                        .then()
+                        .spec(loginResponseSpec)
+                        .extract().as(LoginResponseLombokModel.class));
+
+        step("Check response", () ->
+                assertEquals("QpwL5tke4Pnpja7X4", loginResponseModel.getToken()));
     }
 }
