@@ -1,5 +1,7 @@
 package tests;
 
+import io.restassured.RestAssured;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -11,6 +13,13 @@ import static org.hamcrest.Matchers.is;
 
 public class HWReqresInTests {
 
+    @BeforeEach
+    void setupUriAndPath() {
+        RestAssured.baseURI = "https://reqres.in";
+        RestAssured.basePath = "/api";
+    }
+
+
     @Test
     @DisplayName("Проверка email существующего пользователя")
     void singlelUserEmailTest() {
@@ -18,7 +27,7 @@ public class HWReqresInTests {
                 .log().uri()
                 .log().body()
                 .when()
-                .get("https://reqres.in/api/users/2")
+                .get("users/2")
                 .then()
                 .log().status()
                 .log().body()
@@ -29,7 +38,7 @@ public class HWReqresInTests {
     @Test
     @DisplayName("Проверка не существующего пользователя")
     void singleUserNotFoundTest() {
-        get("https://reqres.in/api/users/23")
+        get("users/23")
                 .then()
                 .log().status()
                 .log().body()
@@ -39,7 +48,7 @@ public class HWReqresInTests {
     @Test
     @DisplayName("Проверка списка цветовой гаммы")
     void listResourceTest() {
-        get("https://reqres.in/api/unknown")
+        get("unknown")
                 .then()
                 .log().status()
                 .log().body()
@@ -58,7 +67,7 @@ public class HWReqresInTests {
                 .log().uri()
                 .log().body()
                 .when()
-                .get("https://reqres.in/api/users?delay=3")
+                .get("users?delay=3")
                 .then()
                 .log().status()
                 .log().body()
@@ -77,7 +86,7 @@ public class HWReqresInTests {
                 .contentType(JSON)
                 .body(requestBody)
                 .when()
-                .post("https://reqres.in/api/register")
+                .post("register")
                 .then()
                 .log().status()
                 .log().body()
