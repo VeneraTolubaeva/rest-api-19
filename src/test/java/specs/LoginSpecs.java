@@ -19,11 +19,37 @@ public class LoginSpecs {
             .contentType(JSON)
             .baseUri("https://reqres.in")
             .basePath("/api");
+    public static RequestSpecification logRequestSpec = with()
+            .log().uri()
+            .log().body()
+            .filter(withCustomTemplates())
+            .baseUri("https://reqres.in")
+            .basePath("/api");
 
     public static ResponseSpecification loginResponseSpec = new ResponseSpecBuilder()
             .log(STATUS)
             .log(BODY)
             .expectStatusCode(200)
             .expectBody("token", notNullValue())
+            .build();
+    public static ResponseSpecification loginResponse200OKSpec = new ResponseSpecBuilder()
+            .log(STATUS)
+            .log(BODY)
+            .expectStatusCode(200)
+            .build();
+    public static ResponseSpecification loginResponseListSpec = new ResponseSpecBuilder()
+            .log(STATUS)
+            .log(BODY)
+            .expectStatusCode(200)
+//            .expectBody("id", notNullValue())
+//            .expectBody("name", notNullValue())
+//            .expectBody("year", notNullValue())
+//            .expectBody("color", notNullValue())
+//            .expectBody("pantone_value", notNullValue())
+            .build();
+    public static ResponseSpecification loginResponse404Spec = new ResponseSpecBuilder()
+            .log(STATUS)
+            .log(BODY)
+            .expectStatusCode(404)
             .build();
 }

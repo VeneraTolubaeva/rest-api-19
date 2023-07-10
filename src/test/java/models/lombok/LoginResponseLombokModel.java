@@ -4,5 +4,6 @@ import lombok.Data;
 
 @Data
 public class LoginResponseLombokModel {
-   String token;
+   private Integer id;
+   private String token;
 }

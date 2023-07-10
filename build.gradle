@@ -12,7 +12,7 @@ repositories {
 }
 
 def restAssuredVersion = "5.3.0",
-        allureVersion = "2.19.0",
+        allureVersion = "2.21.0",
         slf4jVersion = "2.0.7"
 
 allure {
@@ -35,6 +35,7 @@ dependencies {
             "io.rest-assured:json-schema-validator:$restAssuredVersion",
             "io.qameta.allure:allure-rest-assured:$allureVersion",
             "org.junit.jupiter:junit-jupiter:5.9.2",
+            "org.assertj:assertj-core:3.24.2",
             "org.slf4j:slf4j-simple:$slf4jVersion"
     )
 }
