@@ -13,7 +13,6 @@ import static specs.LoginSpecs.*;
 
 @Tag("spec")
 public class HWRequresInSpecsTests {
-
         @Test
         @DisplayName("Check single user email")
         void singlelUserEmailTest() {
@@ -28,7 +27,6 @@ public class HWRequresInSpecsTests {
             step("Check response", () ->
                     assertThat(response.getData().getEmail().equals(expectedUserEmail)));
         }
-
         @Test
         @DisplayName("Check single user not found")
         void singleUserNotFoundTest() {
@@ -42,7 +40,6 @@ public class HWRequresInSpecsTests {
             step("Check response", () ->
                     assertThat(response.getError()).isNull());
         }
-
         @Test
         @DisplayName("Check list users")
         void listUserTest() {
@@ -62,8 +59,6 @@ public class HWRequresInSpecsTests {
         step("Check last user id", () ->
                 assertThat(response.getData().getLast().getId()).isEqualTo(expectedIdLastUser));
     }
-
-
         @Test
         @DisplayName("Check list DELAYED RESPONSE")
         void delayedResponseTest() {
@@ -84,14 +79,12 @@ public class HWRequresInSpecsTests {
             step("Check last user id", () ->
                     assertThat(response.getData().getLast().getId()).isEqualTo(expectedIdLastUser));
         }
-
         @Test
         @DisplayName("Check successful registration")
         void successfulRegisterTest() {
             RegisterLombokModel registerLombokModel = new RegisterLombokModel();
             registerLombokModel.setEmail("eve.holt@reqres.in");
             registerLombokModel.setPassword("pistol");
-
 
             LoginResponseLombokModel response = step("Make request", () ->
                     given(loginRequestSpec)

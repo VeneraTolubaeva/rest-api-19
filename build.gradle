@@ -39,19 +39,23 @@ dependencies {
             "org.slf4j:slf4j-simple:$slf4jVersion"
     )
 }
-
 tasks.withType(Test) {
     useJUnitPlatform()
 
     testLogging {
-        lifecycle{
+        lifecycle {
             events "started", "skipped", "failed", "standard_error", "standard_out"
             exceptionFormat "short"
         }
     }
+}
 
-    task spec_test (type: Test) {
+    test {
+        useJUnitPlatform()
+    }
+
+    task spec_test(type: Test) {
         useJUnitPlatform {
             includeTags("spec")
         }
-}
+    }
