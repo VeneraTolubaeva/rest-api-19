@@ -1,8 +1,6 @@
-package tests;
+package tests.Lessons;
 
 import io.restassured.RestAssured;
-import models.lombok.LoginBodyLombokModel;
-import models.lombok.LoginResponseLombokModel;
 import models.pojo.LoginBodyPojoModel;
 import models.pojo.LoginResponsePojoModel;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,7 +11,7 @@ import static io.restassured.http.ContentType.JSON;
 import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ReqresInExtendedLombokTests {
+public class ReqresInExtendedPojoTests {
 
     @BeforeEach
     void setupUriAndPath() {
@@ -39,12 +37,12 @@ public class ReqresInExtendedLombokTests {
                 .body("token", is("QpwL5tke4Pnpja7X4"));
     }
     @Test
-    void successfulLoginWithLombokModelsTest() {
-        LoginBodyLombokModel requestBody = new LoginBodyLombokModel();
+    void successfulLoginWithPojoModelsTest() {
+        LoginBodyPojoModel requestBody = new LoginBodyPojoModel();
         requestBody.setEmail("eve.holt@reqres.in");
         requestBody.setPassword("cityslicka");
 
-        LoginResponseLombokModel loginResponseModel = given()
+        LoginResponsePojoModel loginResponseModel = given()
                 .log().uri()
                 .log().body()
                 .contentType(JSON)
@@ -55,7 +53,7 @@ public class ReqresInExtendedLombokTests {
                 .log().status()
                 .log().body()
                 .statusCode(200)
-                .extract().as(LoginResponseLombokModel.class);
+                .extract().as(LoginResponsePojoModel.class);
 
         assertEquals("QpwL5tke4Pnpja7X4", loginResponseModel.getToken());
     }

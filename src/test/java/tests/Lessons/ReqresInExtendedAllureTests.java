@@ -1,9 +1,9 @@
-package tests;
+package tests.Lessons;
 
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
-import models.lombok.LoginBodyLombokModel;
 import models.lombok.LoginResponseLombokModel;
+import models.lombok.RegisterLombokModel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -25,7 +25,7 @@ public class ReqresInExtendedAllureTests {
 
     @Test
     void successfulLoginWithAllureTest() {
-        LoginBodyLombokModel requestBody = new LoginBodyLombokModel();
+        RegisterLombokModel requestBody = new RegisterLombokModel();
         requestBody.setEmail("eve.holt@reqres.in");
         requestBody.setPassword("cityslicka");
 
@@ -49,7 +49,7 @@ public class ReqresInExtendedAllureTests {
     @Test
     void successfulLoginWithAllureAsConfigTest() {
         RestAssured.filters(new AllureRestAssured());
-        LoginBodyLombokModel requestBody = new LoginBodyLombokModel();
+        RegisterLombokModel requestBody = new RegisterLombokModel();
         requestBody.setEmail("eve.holt@reqres.in");
         requestBody.setPassword("cityslicka");
 
@@ -71,7 +71,7 @@ public class ReqresInExtendedAllureTests {
 
     @Test
     void successfulLoginWithCustomAllureTest() {
-        LoginBodyLombokModel requestBody = new LoginBodyLombokModel();
+        RegisterLombokModel requestBody = new RegisterLombokModel();
         requestBody.setEmail("eve.holt@reqres.in");
         requestBody.setPassword("cityslicka");
 
@@ -94,7 +94,7 @@ public class ReqresInExtendedAllureTests {
     @Test
     void successfulLoginWithStepsTest() {
 
-        LoginBodyLombokModel requestBody = new LoginBodyLombokModel();
+        RegisterLombokModel requestBody = new RegisterLombokModel();
         requestBody.setEmail("eve.holt@reqres.in");
         requestBody.setPassword("cityslicka");
 
@@ -119,7 +119,7 @@ public class ReqresInExtendedAllureTests {
     @Test
     void successfulLoginWithSpecsTest() {
 
-        LoginBodyLombokModel requestBody = new LoginBodyLombokModel();
+        RegisterLombokModel requestBody = new RegisterLombokModel();
         requestBody.setEmail("eve.holt@reqres.in");
         requestBody.setPassword("cityslicka");
 
