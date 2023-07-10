@@ -49,4 +49,9 @@ tasks.withType(Test) {
             exceptionFormat "short"
         }
     }
+
+    task spec_test (type: Test) {
+        useJUnitPlatform {
+            includeTags("spec")
+        }
 }
