@@ -10,14 +10,14 @@ public class EditProfileTest extends TestBase {
 
     @Test
     void editUserProfileTest() {
-        String valueId = "3121228",
-                valueFirstName = "Eduard",
-                valueLastName = "Tibov",
-                valueEmail = "rasul@mail.ru",
-                valueCompany = "Dom",
-                valueCountryId = "66",
+        String valueId = "31456798",
+                valueFirstName = "Lulu",
+                valueLastName = "Tutu",
+                valueEmail = "venera@mail.ru",
+                valueCompany = "CR",
+                valueCountryId = "12",
                 valueStateProvinceId = "0",
-                valueCity = "Stavropole",
+                valueCity = "Moscow",
                 valueAddress1 = "Lenina",
                 valueAddress2 = "Mira",
                 valueZipPostalCode = "562014",
